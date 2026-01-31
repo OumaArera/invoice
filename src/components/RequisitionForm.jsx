@@ -13,6 +13,7 @@ export default function RequisitionForm() {
     cash: "",
     chequeNo: "",
     to: "",
+    being: "", // Added being field
   });
 
   const [signature, setSignature] = useState({
@@ -217,6 +218,21 @@ export default function RequisitionForm() {
                     }
                     className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="Recipient"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Being
+                  </label>
+                  <textarea
+                    value={requisitionData.being}
+                    onChange={(e) =>
+                      setRequisitionData({ ...requisitionData, being: e.target.value })
+                    }
+                    rows="3"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    placeholder="Description or purpose of the requisition..."
                   />
                 </div>
               </div>
@@ -553,8 +569,11 @@ export default function RequisitionForm() {
                             padding: "8px 12px",
                             fontSize: "12px",
                             minHeight: "60px",
+                            whiteSpace: "pre-wrap",
                           }}
-                        ></td>
+                        >
+                          {requisitionData.being}
+                        </td>
                       </tr>
 
                       {/* Signatures Row */}
